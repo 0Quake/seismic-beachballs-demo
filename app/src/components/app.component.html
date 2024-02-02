@@ -1,5 +1,5 @@
 <div class="ui padded grid">
-    <div class="five wide column" style="overflow:auto, max-height:500px">        
+    <div class="five wide column" style="overflow:auto; max-height:500px">
         <segment [header]="'Entries in r-t-p (up-south-east) basis'" [collapsed]='false' [withhelp]='true' [helpid]="'spherical-help'">
             <a class="ui blue ribbon label" href="https://github.com/timofeevda/seismic-beachballs-demo" target="_blank">
                 <i class="alternate github icon"></i> View on GitHub
@@ -7,7 +7,7 @@
             <tensor [isCartesian]="flase"></tensor>
         </segment>
         <div class="ui hidden divider"></div>
-        <segment [header]="'Strike / Dip / Rake for closest double couple'" [collapsable]='false' [withhelp]='true' [helpid]="'sdr-help'">
+        <segment [header]="'断層パラメータ (ダブルカップル)'" [collapsable]='false' [withhelp]='true' [helpid]="'sdr-help'">
             <sdr></sdr>
         </segment>
         <div class="ui hidden divider"></div>
@@ -15,33 +15,33 @@
     </div>
     <div class="eleven wide column">
         <div class="row">
-            <segment *ngIf="!usgsView.isUSGSView" [header]="'Moment Tensor'" [collapsable]='false' fit='true' [withhelp]='true' [helpid]="'beachball-help'">
+            <segment *ngIf="!usgsView.isUSGSView" [header]="'モーメントテンソル'" [collapsable]='false' fit='true' [withhelp]='true' [helpid]="'beachball-help'">
                 <fulltensorscene></fulltensorscene>
             </segment>
             <segment *ngIf="usgsView.isUSGSView" [header]="'Events with computed moment tensor'" [collapsable]='false' fit='true' [withhelp]='true' [helpid]="'beachball-help'">
-                    <map></map>
+                <map></map>
             </segment>
         </div>
         <div class="ui hidden divider" *ngIf="!usgsView.isUSGSView"></div>
         <div class="row" *ngIf="!usgsView.isUSGSView">
             <div class="ui grid">
                 <div class="four wide column">
-                    <segment [header]="'Equal Area Net Projection'" [collapsable]='false' [fit]='true'>
+                    <segment [header]="'等面積投影'" [collapsable]='false' [fit]='true'>
                         <projectedtensorscene [height]='122' [projection]="'equalarea'"></projectedtensorscene>
                     </segment>
                 </div>
                 <div class="four wide column">
-                    <segment [header]="'Wulff Net Projection'" [collapsable]='false' [fit]='true'>
+                    <segment [header]="'ウルフネット投影'" [collapsable]='false' [fit]='true'>
                         <projectedtensorscene [height]='122' [projection]="'wulff'"></projectedtensorscene>
                     </segment>
                 </div>
                 <div class="four wide column">
-                    <segment [header]="'Orthographic Projection'" [collapsable]='false' fit='true'>
+                    <segment [header]="'正投影'" [collapsable]='false' fit='true'>
                         <projectedtensorscene [height]='122' [projection]="'orthographic'"></projectedtensorscene>
                     </segment>
                 </div>
                 <div class="four wide column">
-                    <segment [header]="'Closest Double Couple'" [collapsable]='false' fit='true'>
+                    <segment [header]="'ダブルカップル'" [collapsable]='false' fit='true'>
                         <threedoublecouplescene [height]='122'></threedoublecouplescene>
                     </segment>
                 </div>
@@ -55,11 +55,11 @@
     tensor in spherical coordinates. These values are used to calculate Strike / Dip / Rake for closest double couple.
 </helpopup>
 
-<helpopup [id]="'sdr-help'" [header]="'Strike / Dip / Rake (Slip)'">
+<helpopup [id]="'sdr-help'" [header]="'走向(Strike) / 傾斜角(Dip) / すべり角(Rake,Slip)'">
     Strike, dip, and rake are used to describe earthquake Focal Mechanisms. These values are computed based on moment tensor entries in r-t-p (up-south-east) basis
 </helpopup>
 
-<helpopup [id]="'beachball-help'" [header]="'3D moment tensor'">
-    The code used for 3D moment tensor is based on Carl Tape's work. See
-    <a href="http://www.giseis.alaska.edu/input/carl/" target="_blank">http://www.giseis.alaska.edu/input/carl/</a> for papers and reference to Mathematica scripts.
+<helpopup [id]="'beachball-help'" [header]="'3Dモーメントテンソル'">
+    3Dモーメントテンソルの表示機能は、Carl Tape による成果に基づいています。論文および Mathematica スクリプトのリファレンスについては、
+    <a href="http://www.giseis.alaska.edu/input/carl/" target="_blank">http://www.giseis.alaska.edu/input/carl/</a>を参照してください。
 </helpopup>
