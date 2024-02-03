@@ -1,13 +1,13 @@
 <div class="ui padded grid">
     <div class="five wide column" style="overflow:auto; max-height:500px">
-        <segment [header]="'Entries in r-t-p (up-south-east) basis'" [collapsed]='false' [withhelp]='true' [helpid]="'spherical-help'">
+        <segment [header]="'エントリ (南/東/上方ベース)'" [collapsed]='false' [withhelp]='true' [helpid]="'spherical-help'">
             <a class="ui blue ribbon label" href="https://github.com/timofeevda/seismic-beachballs-demo" target="_blank">
                 <i class="alternate github icon"></i> View on GitHub
             </a>
             <tensor [isCartesian]="flase"></tensor>
         </segment>
         <div class="ui hidden divider"></div>
-        <segment [header]="'断層パラメータ (ダブルカップル)'" [collapsable]='false' [withhelp]='true' [helpid]="'sdr-help'">
+        <segment [header]="'断層パラメータ (最も近いダブルカップル)'" [collapsable]='false' [withhelp]='true' [helpid]="'sdr-help'">
             <sdr></sdr>
         </segment>
         <div class="ui hidden divider"></div>
@@ -18,7 +18,7 @@
             <segment *ngIf="!usgsView.isUSGSView" [header]="'モーメントテンソル'" [collapsable]='false' fit='true' [withhelp]='true' [helpid]="'beachball-help'">
                 <fulltensorscene></fulltensorscene>
             </segment>
-            <segment *ngIf="usgsView.isUSGSView" [header]="'Events with computed moment tensor'" [collapsable]='false' fit='true' [withhelp]='true' [helpid]="'beachball-help'">
+            <segment *ngIf="usgsView.isUSGSView" [header]="'モーメントテンソル計算済みのイベント'" [collapsable]='false' fit='true' [withhelp]='true' [helpid]="'beachball-help'">
                 <map></map>
             </segment>
         </div>
@@ -50,13 +50,12 @@
     </div>
 </div>
 
-<helpopup [id]="'spherical-help'" [header]="'Moment tensor entries in r-t-p (up-south-east) basis'">
-    Moment tensor entries represented in spherical coordinates (r-t-p (up-south-east) basis). Six distinct moment tensor entries are used to form 3 x 3 symmetric
-    tensor in spherical coordinates. These values are used to calculate Strike / Dip / Rake for closest double couple.
+<helpopup [id]="'spherical-help'" [header]="'モーメントテンソルのエントリ (南/東/上方ベース)'">
+    球面座標(南/東/上方ベース)で表されるモーメントテンソル エントリ。6つの値を使用して、球面座標で3x3の対称テンソルを形成します。 これらの値は、最も近いダブルカップルの走向/傾斜角/すべり角の計算にも使用されます。
 </helpopup>
 
-<helpopup [id]="'sdr-help'" [header]="'走向(Strike) / 傾斜角(Dip) / すべり角(Rake,Slip)'">
-    Strike, dip, and rake are used to describe earthquake Focal Mechanisms. These values are computed based on moment tensor entries in r-t-p (up-south-east) basis
+<helpopup [id]="'sdr-help'" [header]="'走向 / 傾斜角 / すべり角'">
+    走向(Strike) / 傾斜角(Dip) / すべり角(Rake,Slip)は、地震のメカニズムを説明するために使用されます。モーメントテンソルのエントリに基づいて計算されます。
 </helpopup>
 
 <helpopup [id]="'beachball-help'" [header]="'3Dモーメントテンソル'">
